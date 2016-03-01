@@ -17,4 +17,5 @@ install:
 
 build_script:
     - echo Building version:%appveyor_build_version%
+    - echo %cd%
     - cmd: msbuild c:\projects\test-appveyor\build\vs2015\Playground.sln /t:build /p:Configuration=Release
