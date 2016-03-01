@@ -1,6 +1,7 @@
 install:
     - git submodule update --init --recursive
     - git clone --recursive https://github.com/premake/premake-core.git c:\projects\test-appveyor\build\buildtools-premake\bin\premake-core
+    - cmd: c:\projects\test-appveyor\build\buildtools-premake\bin\build.bat
     - cmd: c:\projects\test-appveyor\build\buildtools-premake\bin\premake.bat --version
 
 build_script:
