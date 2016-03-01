@@ -6,9 +6,12 @@ install:
     - cd build\buildtools-premake\bin
     - git clone --depth=1 --recursive -b release --single-branch https://github.com/premake/premake-core.git
 
+    - echo $PATH
+    - echo $VS140COMNTOOLS
+    - echo %VS140COMNTOOLS%
 
-    #- '"C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64'
-    - "%VS140COMNTOOLS%\vsvars32.bat"
+    - '"C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64'
+    #- "%VS140COMNTOOLS%\vsvars32.bat"
 
     - cd premake-core
     - nmake -f Bootstrap.mak MSDEV=vs2015 windows
