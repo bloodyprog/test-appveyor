@@ -1,6 +1,6 @@
 -- appveyor-test
 
-workspace("Appveyor.Test")
+workspace("AppVeyor")
     configurations( { "Debug", "Release" } )
     location( _ACTION )
 
@@ -12,7 +12,7 @@ workspace("Appveyor.Test")
         targetdir("../output/bin/release")
         objdir("../output/tmp/release")
 
-project( "Project" )
+project( "AppVeyor" )
     kind( "ConsoleApp" )
     language( "C++" )
 

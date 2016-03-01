@@ -18,4 +18,4 @@ install:
 build_script:
     - echo Building version:%appveyor_build_version%
     - buildtools-premake\bin\premake.bat vs2015
-    - cmd: msbuild c:\projects\test-appveyor\build\vs2015\Playground.sln /t:build /p:Configuration=Release
+    - cmd: msbuild c:\projects\test-appveyor\build\vs2015\AppVeyor.sln /t:build /p:Configuration=Release
