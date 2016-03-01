@@ -1,7 +1,8 @@
+install:
+    - git submodule update --init --recursive
+
 before_build:
     - echo Building premake5
-    - git submodule init
-    - git submodule update
     - cmd: c:\projects\test-appveyor\build\buildtools-premake\bin\build.bat
     - cmd: c:\projects\test-appveyor\build\buildtools-premake\bin\premake.bat --version
 
