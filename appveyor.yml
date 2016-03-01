@@ -1,7 +1,8 @@
 before_build:
     - echo Building premake5
-    - cmd: build\buildtools-premake\bin\build.bat
+    - cmd: projects\test-appveyor\build\buildtools-premake\bin\build.bat
+    - cmd: projects\test-appveyor\build\buildtools-premake\bin\premake.bat --version
 
 build_script:
     - echo Building version:%appveyor_build_version%
-    - cmd: msbuild build\vs2015\Playground.sln /t:build /p:Configuration=Release
+    - cmd: msbuild projects\test-appveyor\build\vs2015\Playground.sln /t:build /p:Configuration=Release
