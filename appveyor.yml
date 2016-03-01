@@ -3,8 +3,7 @@ install:
 
 before_build:
     - echo Building premake5
-    - cmd: c:
-    - cmd: cd projects\test-appveyor\build\buildtools-premake\bin
+    - cmd: c:\projects\test-appveyor\build\buildtools-premake\bin
     - cmd: mkdir premake-core
     - cmd: git clone --recursive https://github.com/premake/premake-core.git
     #- cmd: c:\projects\test-appveyor\build\buildtools-premake\bin\build.bat
