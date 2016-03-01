@@ -1,0 +1,7 @@
+before_build:
+    - echo Building premake5
+    - cmd: build\buildtools-premake\bin\build.bat
+
+build_script:
+    - echo Building version:%appveyor_build_version%
+    - cmd: msbuild build\vs2015\Playground.sln /t:build /p:Configuration=Release
