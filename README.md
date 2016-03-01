@@ -1,3 +1,5 @@
 # test-appveyor
 
-[build-status:(https://ci.appveyor.com/api/projects/status/github/test-appveyor/test-appveyor?svg=true)]
+[build-status:()]
+
+[![Build Status](https://ci.appveyor.com/api/projects/status/github/test-appveyor/test-appveyor?svg=true)]
