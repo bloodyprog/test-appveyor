@@ -11,11 +11,11 @@ install:
 
     - cd premake-core
     - nmake -f Bootstrap.mak MSDEV=vs2015 windows
-    - cd ..
+    - cd ..\..\..
 
-    - premake.bat --version
+    - buildtools-premake\bin\premake.bat --version
 
 build_script:
     - echo Building version:%appveyor_build_version%
-    - echo %cd%
+    - buildtools-premake\bin\premake.bat vs2015
     - cmd: msbuild c:\projects\test-appveyor\build\vs2015\Playground.sln /t:build /p:Configuration=Release
