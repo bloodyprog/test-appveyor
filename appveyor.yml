@@ -1,9 +1,14 @@
 install:
     - git submodule update --init --recursive
-    - echo %CD%
+
     - cd build\buildtools-premake\bin
-    - ps: build.bat
-    - ps: premake.bat --version
+    - git clone --depth=1 --recursive -b release --single-branch https://github.com/premake/premake-core.git
+
+    - cd premake-core
+    - cmd: nmake -f Bootstrap.mak MSDEV=vs2015 windows
+    - cd ..
+
+    - premake.bat --version
 
 build_script:
     - echo Building version:%appveyor_build_version%
