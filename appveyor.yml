@@ -19,7 +19,7 @@ install:
 build_script:
     - echo Building version:%appveyor_build_version%
     - cd build
-    - premake.exe vs2015
+    - premake5.exe vs2015
     - cd ..
 
     - cmd: msbuild build\vs2015\AppVeyor.sln /t:build /p:Configuration=Release
