@@ -1,28 +1,25 @@
 os: Visual Studio 2015
 
 install:
-    - appveyor DownloadFile http://llvm.org/releases/3.8.0/LLVM-3.8.0-win64.exe
-    - 7z x LLVM-3.8.0-win64.exe
+    #- appveyor DownloadFile http://llvm.org/releases/3.8.0/LLVM-3.8.0-win64.exe
+    #- 7z x LLVM-3.8.0-win64.exe
 
-    - appveyor DownloadFile https://github.com/premake/premake-core/releases/download/v5.0.0-alpha8/premake-5.0.0-alpha8-windows.zip
-    - 7z x premake-5.0.0-alpha8-windows.zip
-    - premake5.exe --version
 
     - git submodule update --init --recursive
 
-    - cd build\buildtools-premake\bin
-    - git clone --depth=1 --recursive -b release --single-branch https://github.com/premake/premake-core.git
+    - cd build
+    - appveyor DownloadFile https://github.com/premake/premake-core/releases/download/v5.0.0-alpha8/premake-5.0.0-alpha8-windows.zip
+    - 7z x premake-5.0.0-alpha8-windows.zip
+    - premake5.exe --version
+    - cd ..
 
     #- '"C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64'
     - '"C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\vsvars32.bat"'
 
-    - cd premake-core
-    - nmake -f Bootstrap.mak MSDEV=vs2015 windows
-    - cd ..\..\..
-
-    - buildtools-premake\bin\premake.bat --version
-
 build_script:
     - echo Building version:%appveyor_build_version%
-    - buildtools-premake\bin\premake.bat vs2015
-    - cmd: msbuild c:\projects\test-appveyor\build\vs2015\AppVeyor.sln /t:build /p:Configuration=Release
+    - cd build
+    - premake.exe vs2015
+    - cd ..
+
+    - cmd: msbuild build\vs2015\AppVeyor.sln /t:build /p:Configuration=Release
