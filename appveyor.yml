@@ -5,6 +5,10 @@ install:
     - 7z x LLVM-3.8.0-win64.exe
     - dir
 
+    - appveyor DownloadFile https://github.com/premake/premake-core/releases/download/v5.0.0-alpha8/premake-5.0.0-alpha8-windows.zip
+    - 7z x premake-5.0.0-alpha8-windows.zip
+    - dir
+
     - git submodule update --init --recursive
 
     - cd build\buildtools-premake\bin
