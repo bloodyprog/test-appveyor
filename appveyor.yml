@@ -6,12 +6,8 @@ environment:
 
 configuration:
     - Debug
-    - Release
 
 install:
-    #- appveyor DownloadFile http://llvm.org/releases/3.8.0/LLVM-3.8.0-win64.exe
-    #- 7z x LLVM-3.8.0-win64.exe
-
     - git submodule update --init --recursive
 
     - cd build
