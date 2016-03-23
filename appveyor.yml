@@ -12,3 +12,5 @@ install:
 
     - setup-premake.bat
     - setup-sqlite.bat
+
+    - build/setup-dependencies.ps1
