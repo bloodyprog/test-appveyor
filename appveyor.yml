@@ -10,7 +10,11 @@ configuration:
 install:
     - git submodule update --init --recursive
 
-    - setup-premake.bat
+    # test batch setup
     - setup-sqlite.bat
 
+    # test powershell setup
     - ps: build/setup-dependencies.ps1
+
+    - cd build
+    - dependencies/premake/premake5.exe %VS_VERSION%

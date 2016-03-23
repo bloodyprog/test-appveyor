@@ -32,23 +32,5 @@ if (-not (Test-Path $premake_dir))
     7z x -r -opremake $premake_file
 }
 
-# setup clang
-
-$llvm_url  = "http://llvm.org/releases/3.8.0/LLVM-3.8.0-win64.exe"
-$llvm_dir  = "llvm"
-$llvm_file = "llvm.zip"
-
-if (-not (Test-Path $llvm_file))
-{
-    Download $llvm_url $llvm_file
-}
-
-if (-not (Test-Path $llvm_dir))
-{
-    7z x -r $llvm_file `$_OUTDIR
-    
-    Rename-Item `$_OUTDIR $llvm_dir
-}
-
 Pop-Location
 Pop-Location
