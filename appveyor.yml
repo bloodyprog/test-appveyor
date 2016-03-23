@@ -16,5 +16,6 @@ install:
     # test powershell setup
     - ps: build/setup-dependencies.ps1
 
+    # test build system
     - cd build
-    - dependencies/premake/premake5.exe %VS_VERSION%
+    - dependencies\premake\premake5.exe %VS_VERSION%
