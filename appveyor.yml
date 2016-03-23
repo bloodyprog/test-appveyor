@@ -23,3 +23,5 @@ install:
 
     # test chocolatey
     - choco list -localonly
+    - choco install wget
+    - choco list -localonly
