@@ -19,3 +19,4 @@ install:
     # test build system
     - cd build
     - dependencies\premake\premake5.exe %VS_VERSION%
+    - cd ..
