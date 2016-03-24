@@ -10,18 +10,16 @@ configuration:
 install:
     - git submodule update --init --recursive
 
-    # test batch setup
-    - setup-sqlite.bat
+    # test chocolatey
+    - choco install wget
+    - choco list -localonly
 
-    # test powershell setup
-    - ps: build/setup-dependencies.ps1
+    # test batch setup
+    - build\setup-premake.bat
+    - build\setup-sqlite.bat
+    - build\setup-llvm.bat
 
     # test build system
     - cd build
     - dependencies\premake\premake5.exe %VS_VERSION%
     - cd ..
-
-    # test chocolatey
-    - choco list -localonly
-    - choco install wget
-    - choco list -localonly
