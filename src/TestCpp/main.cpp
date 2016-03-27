@@ -2,7 +2,7 @@
 
 int main(int /*argc*/, char** /*argv*/)
 {
-    std::cout << "Hello AppVeyor!" << std::endl;
+    std::cout << "Hello Test C++" << std::endl;
 
     return 0;
 }

@@ -12,13 +12,13 @@ workspace("AppVeyor")
         targetdir("../output/bin/release")
         objdir("../output/tmp/release")
 
-project( "AppVeyor" )
+project( "TestCpp" )
     kind( "ConsoleApp" )
     language( "C++" )
 
-    includedirs { "../src" }
+    includedirs { "../src/TestCpp" }
 
-    files { "../src/**.cpp" }
+    files { "../src/TestCpp/**.cpp" }
 
     configuration { "Debug" }
         defines { "DEBUG" }
@@ -27,6 +27,15 @@ project( "AppVeyor" )
     configuration { "Release" }
         defines { "NDEBUG" }
         flags { "Optimize", "ExtraWarnings", "FatalWarnings" }
+
+    configuration { "vs*" }
+        postbuildcommands { "\"$(TargetPath)\"" }
+
+project( "TestCSharp" )
+    kind( "ConsoleApp" )
+    language( "C#" )
+
+    files { "../src/TestCSharp/**.cs" }
 
     configuration { "vs*" }
         postbuildcommands { "\"$(TargetPath)\"" }
