@@ -30,15 +30,15 @@ install:
     - cd ..
 
 test_script:
-    - cd output\bin\$(configuration)
+    - cd output\bin\debug
     - TestCpp.exe --r junit -o TestCpp.results.xml
     - TestCSharp.exe
     - cd ..\..\..
 
 after_test:
-    - ps: (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path output\bin\$(configuration)\TestCpp.results.xml))
+    - ps: (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path output\bin\debug\TestCpp.results.xml))
 
 artifacts:
   # test artifacts
-  - path: outout\bin\$(configuration)\TestCpp.exe
-  - path: outout\bin\$(configuration)\TestCSharp.exe
+  - path: outout\bin\debug\TestCpp.exe
+  - path: outout\bin\debug\TestCSharp.exe
