@@ -28,5 +28,6 @@ install:
     - cd ..
 
 test_script:
-    - output\bin\debug\TestCpp
+    - output\bin\debug\TestCpp --reporter junit
+    - output\bin\debug\TestCpp --reporter xml
     - output\bin\debug\TestCSharp

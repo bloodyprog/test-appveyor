@@ -1,8 +1,9 @@
-#include <iostream>
+#define CATCH_CONFIG_RUNNER
+#include <catch.hpp>
 
-int main(int /*argc*/, char** /*argv*/)
+int main(int argc, const char* argv[])
 {
     std::cout << "Hello Test C++" << std::endl;
 
-    return 0;
+    return Catch::Session().run(argc, argv);
 }
