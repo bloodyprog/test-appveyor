@@ -23,3 +23,7 @@ install:
     - cd build
     - dependencies\premake\premake5.exe %VS_VERSION%
     - cd ..
+
+test_script:
+    - output\bin\debug\TestCpp
+    - output\bin\debug\TestCSharp
