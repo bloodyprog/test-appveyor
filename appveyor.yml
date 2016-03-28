@@ -33,3 +33,8 @@ test_script:
     - output\bin\debug\TestCpp --reporter junit
     - output\bin\debug\TestCpp --reporter xml
     - output\bin\debug\TestCSharp
+
+artifacts:
+  # test artifacts
+  - path: outout\bin\$(configuration)\TestCpp.exe
+  - path: outout\bin\$(configuration)\TestCSharp.exe
