@@ -10,6 +10,9 @@ configuration:
 install:
     - git submodule update --init --recursive
 
+    # test messages
+    - appveyor AddMessage "this is a test message"
+
     # test chocolatey
     - choco install wget
     - choco list -localonly
