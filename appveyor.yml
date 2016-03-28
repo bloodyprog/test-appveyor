@@ -44,4 +44,5 @@ after_test:
 
 artifacts:
   # test artifacts
-  - path: outout\*.exe
+  - path: outout\bin\debug\TestCpp.exe
+    name: TestCpp
