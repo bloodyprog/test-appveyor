@@ -30,9 +30,11 @@ install:
     - cd ..
 
 test_script:
-    - output\bin\debug\TestCpp --reporter junit
-    - output\bin\debug\TestCpp --reporter xml
-    - output\bin\debug\TestCSharp
+    - cd output\bin\$(configuration)
+    - TestCpp.exe --r junit -o TestCpp.results.xml
+    - ps: (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/junit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\TestCpp.results.xml))
+    - TestCSharp.exe
+    - cd ..
 
 artifacts:
   # test artifacts
