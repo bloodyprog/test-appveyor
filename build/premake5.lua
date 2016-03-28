@@ -1,5 +1,8 @@
 -- appveyor-test
 
+local isOnAppVeyor = os.getenv("APPVEYOR") ~= nil
+local shouldRunTests = not isOnAppVeyor
+
 workspace("AppVeyor")
     configurations( { "Debug", "Release" } )
     location( _ACTION )
@@ -28,8 +31,13 @@ project( "TestCpp" )
         defines { "NDEBUG" }
         flags { "Optimize", "ExtraWarnings", "FatalWarnings" }
 
-    configuration { "vs*" }
-        postbuildcommands { "\"$(TargetPath)\"" }
+    if shouldRunTests then
+        configuration { "vs*" }
+            postbuildcommands { "\"$(TargetPath)\"" }
+
+        configuration { "gmake" }
+            postbuildcommands { "$(TARGET)" }
+    end
 
 project( "TestCSharp" )
     kind( "ConsoleApp" )
@@ -37,5 +45,10 @@ project( "TestCSharp" )
 
     files { "../src/TestCSharp/**.cs" }
 
-    configuration { "vs*" }
-        postbuildcommands { "\"$(TargetPath)\"" }
+    if shouldRunTests then
+        configuration { "vs*" }
+            postbuildcommands { "\"$(TargetPath)\"" }
+
+        configuration { "gmake" }
+            postbuildcommands { "mono $(TARGET)" }
+    end
