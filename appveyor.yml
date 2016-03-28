@@ -21,8 +21,8 @@ install:
 
     # test batch setup
     - build\setup-premake.bat
-    - build\setup-sqlite.bat
-    - build\setup-llvm.bat
+        #- build\setup-sqlite.bat
+        #- build\setup-llvm.bat
 
     # test build system
     - cd build
