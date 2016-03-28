@@ -31,7 +31,7 @@ install:
 
 test_script:
     - cd output\bin\debug
-    - TestCpp.exe --r junit -o TestCpp.results.xml
+    - TestCpp.exe --reporter junit --out TestCpp.results.xml
     - TestCSharp.exe
     - cd ..\..\..
 
