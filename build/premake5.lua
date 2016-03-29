@@ -40,7 +40,7 @@ project( "TestCpp" )
         postbuildcommands { "\"$(TargetPath)" .. CatchArguments("$(OutDir)$(TargetName).results.txt") .. "\"" }
 
     configuration { "gmake" }
-        postbuildcommands { "$(TARGET)" .. CatchArguments("TestCpp") }
+        postbuildcommands { "$(TARGET)" }
 
 project( "TestCSharp" )
     kind( "ConsoleApp" )
