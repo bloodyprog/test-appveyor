@@ -38,7 +38,7 @@ project( "TestCpp" )
 
     configuration { "vs*" }
         postbuildcommands {
-            "pwd",
+            "dir",
             "\"$(TargetPath)" .. CatchArguments("output/bin/debug/TestCpp.results.txt") .. "\""
         }
 
