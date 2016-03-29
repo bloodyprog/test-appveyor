@@ -1,8 +1,8 @@
 -- appveyor-test
 
-local function CatchArguments(targetName)
+local function CatchArguments(outputFile)
     if not os.getenv("APPVEYOR") then
-        return " --reporter junit --out " .. targetName .. ".results.xml"
+        return " --reporter junit --out " .. outputFile
     else
         return ""
     end
@@ -37,7 +37,7 @@ project( "TestCpp" )
         flags { "Optimize", "ExtraWarnings", "FatalWarnings" }
 
     configuration { "vs*" }
-        postbuildcommands { "\"$(TargetPath)" .. CatchArguments("TestCpp") .. "\"" }
+        postbuildcommands { "\"$(TargetPath)" .. CatchArguments("$(OutDir)$(TargetName).results.txt") .. "\"" }
 
     configuration { "gmake" }
         postbuildcommands { "$(TARGET)" .. CatchArguments("TestCpp") }
