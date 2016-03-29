@@ -39,7 +39,7 @@ project( "TestCpp" )
     configuration { "vs*" }
         postbuildcommands {
             "dir",
-            "\"$(TargetPath)" .. CatchArguments("output/bin/debug/TestCpp.results.txt") .. "\""
+            "\"$(TargetPath)" .. CatchArguments("../../output/bin/debug/TestCpp.results.txt") .. "\""
         }
 
     configuration { "gmake" }
