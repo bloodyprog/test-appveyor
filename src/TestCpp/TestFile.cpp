@@ -12,5 +12,5 @@ TEST_CASE("Test_Case_B")
 
 TEST_CASE("Test_Case_C")
 {
-    CHECK(false);
+    CHECK(true);
 }
