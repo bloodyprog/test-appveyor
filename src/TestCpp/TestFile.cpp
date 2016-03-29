@@ -12,5 +12,13 @@ TEST_CASE("Test_Case_B")
 
 TEST_CASE("Test_Case_C")
 {
-    CHECK(false);
+    SECTION("success")
+    {
+        CHECK(2 < 4);
+    }
+
+    SECTION("failure")
+    {
+        CHECK(3 * 2 == 9);
+    }
 }
