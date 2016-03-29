@@ -37,7 +37,10 @@ project( "TestCpp" )
         flags { "Optimize", "ExtraWarnings", "FatalWarnings" }
 
     configuration { "vs*" }
-        postbuildcommands { "\"$(TargetPath)" .. CatchArguments("output/bin/debug/TestCpp.results.txt") .. "\"" }
+        postbuildcommands {
+            "pwd",
+            "\"$(TargetPath)" .. CatchArguments("output/bin/debug/TestCpp.results.txt") .. "\""
+        }
 
     configuration { "gmake" }
         postbuildcommands { "$(TARGET)" }
