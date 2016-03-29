@@ -1,7 +1,7 @@
 -- appveyor-test
 
 local function CatchArguments(outputFile)
-    if not os.getenv("APPVEYOR") then
+    if os.getenv("APPVEYOR") then
         return " --reporter junit --out " .. outputFile
     else
         return ""
