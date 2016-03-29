@@ -33,10 +33,7 @@ install:
     - dependencies\premake\premake5.exe %VS_VERSION%
     - cd ..
 
-test_script:
-    - build\run-tests.bat
-
-after_test:
+after_build:
     - ps: (New-Object 'System.Net.WebClient').UploadFile("https://ci.appveyor.com/api/testresults/junit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path output\bin\debug\TestCpp.results.xml))
 
 artifacts:

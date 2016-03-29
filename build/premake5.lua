@@ -1,7 +1,12 @@
 -- appveyor-test
 
-local isOnAppVeyor = os.getenv("APPVEYOR") ~= nil
-local shouldRunTests = not isOnAppVeyor
+local function CatchArguments(targetName)
+    if not os.getenv("APPVEYOR") then
+        return " --reporter junit --out " .. targetName .. ".results.xml"
+    else
+        return ""
+    end
+end
 
 workspace("AppVeyor")
     configurations( { "Debug", "Release" } )
@@ -31,13 +36,11 @@ project( "TestCpp" )
         defines { "NDEBUG" }
         flags { "Optimize", "ExtraWarnings", "FatalWarnings" }
 
-    if shouldRunTests then
-        configuration { "vs*" }
-            postbuildcommands { "\"$(TargetPath)\"" }
+    configuration { "vs*" }
+        postbuildcommands { "\"$(TargetPath)" .. CatchArguments("TestCpp") .. "\"" }
 
-        configuration { "gmake" }
-            postbuildcommands { "$(TARGET)" }
-    end
+    configuration { "gmake" }
+        postbuildcommands { "$(TARGET)" .. CatchArguments("TestCpp") }
 
 project( "TestCSharp" )
     kind( "ConsoleApp" )
@@ -45,10 +48,8 @@ project( "TestCSharp" )
 
     files { "../src/TestCSharp/**.cs" }
 
-    if shouldRunTests then
-        configuration { "vs*" }
-            postbuildcommands { "\"$(TargetPath)\"" }
+    configuration { "vs*" }
+        postbuildcommands { "\"$(TargetPath)\"" }
 
-        configuration { "gmake" }
-            postbuildcommands { "mono $(TARGET)" }
-    end
+    configuration { "gmake" }
+        postbuildcommands { "mono $(TARGET)" }
