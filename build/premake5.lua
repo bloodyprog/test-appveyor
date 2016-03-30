@@ -1,4 +1,4 @@
--- appveyor-test
+-- test-appveyor-cpp
 
 local function CatchArguments(outputFile)
     if os.getenv("APPVEYOR") then
