@@ -42,14 +42,13 @@ project( "TestCpp" )
     configuration { "gmake" }
         postbuildcommands { "$(TARGET)" }
 
-project( "TestCSharp" )
-    kind( "ConsoleApp" )
-    language( "C#" )
+project("TestCSharp.NUnit")
+    kind("SharedLib")
+    language("C#")
 
     files { "../src/TestCSharp/**.cs" }
 
-    configuration { "vs*" }
-        postbuildcommands { "\"$(TargetPath)\"" }
+    links { "dependencies/nunit/bin/net-4.5/nunit.framework.dll" }
 
-    configuration { "gmake" }
-        postbuildcommands { "mono $(TARGET)" }
+    configuration { "vs*" }
+        postbuildcommands { "$(SolutionDir)..\\dependencies\\nunit\\bin\\nunit3-console.exe $(TargetPath)" }

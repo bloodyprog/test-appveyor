@@ -17,8 +17,8 @@ TEST_CASE("Test_Case_C")
         CHECK(2 < 4);
     }
 
-    SECTION("failure")
+    /*SECTION("failure")
     {
         CHECK(3 * 2 == 9);
-    }
+    }*/
 }
