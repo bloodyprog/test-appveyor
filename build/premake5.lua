@@ -38,17 +38,3 @@ project( "TestCpp" )
 
     configuration { "vs*" }
         postbuildcommands { "\"$(TargetPath)\"" .. CatchArguments("$(OutDir)$(TargetName).results.xml") }
-
-    configuration { "gmake" }
-        postbuildcommands { "$(TARGET)" }
-
-project("TestCSharp.NUnit")
-    kind("SharedLib")
-    language("C#")
-
-    files { "../src/TestCSharp/**.cs" }
-
-    links { "C:/Tools/NUnit3/bin/net-4.5/nunit.framework.dll" }
-
-    configuration { "vs*" }
-        postbuildcommands { "nunit3-console.exe $(TargetPath)" }
